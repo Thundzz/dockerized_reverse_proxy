@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+    reverseproxy:
+        image: reverseproxy
+        ports:
+            - 81:80
+        restart: always
+
+    sitea:
+        depends_on:
+            - reverseproxy
+        image: sitea
+        restart: always
+
+    siteb:
+        depends_on:
+            - reverseproxy
+        image: siteb
+        restart: always
